@@ -1,13 +1,17 @@
 const express = require("express");
+const {
+  getAllHeroes,
+  addHero,
+  deleteHero,
+  updateHero,
+} = require("../controllers/heroes.controller.js");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Hello");
-});
-router.post("/", () => {});
-router.patch("/:id", () => {});
-router.delete("/:id", () => {});
+router.get("/", getAllHeroes);
+router.post("/", addHero);
+router.patch("/:id", updateHero);
+router.delete("/:id", deleteHero);
 
 module.exports = {
   router,
