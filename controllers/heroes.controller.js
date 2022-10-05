@@ -31,22 +31,22 @@ const addHero = async (req, res) => {
   }
 };
 
-const deleteHero = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const deletedHero = await Hero.findByIdAndDelete(id);
-    res.status(200).json(deletedHero);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
 const updateHero = async (req, res) => {
   const { id } = req.params;
   const body = req.body;
   try {
     const updatedHero = await Hero.findByIdAndUpdate(id, body);
     res.status(200).json(updatedHero);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const deleteHero = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedHero = await Hero.findByIdAndDelete(id);
+    res.status(200).json(deletedHero);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
